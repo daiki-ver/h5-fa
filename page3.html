@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>乐道L80 - 点位介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .car-scene {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .car-scene img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        .back-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .back-btn svg path {
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .initial-mask {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 33%;
+            z-index: 10;
+            background: linear-gradient(to top, 
+                rgba(20, 45, 35, 1) 0%, 
+                rgba(25, 50, 40, 0.85) 30%, 
+                rgba(30, 55, 45, 0.4) 70%, 
+                rgba(40, 70, 55, 0) 100%);
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: height;
+            overflow: hidden;
+        }
+
+        .initial-mask.expanded {
+            height: 55%;
+        }
+
+        .initial-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .initial-mask.expanded .initial-content {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+
+        .initial-text {
+            font-size: 18px;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .initial-arrows {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .arrow-up {
+            width: 24px;
+            height: 24px;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+
+        .arrow-up svg {
+            width: 100%;
+            height: 100%;
+            fill: #E63946;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .detail-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            padding: 0 20px;
+            padding-top: 60px;
+        }
+
+        .initial-mask.expanded .detail-content {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .detail-back-btn {
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .detail-back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .detail-back-btn svg path {
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .detail-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .feature-item {
+            margin-bottom: 18px;
+        }
+
+        .feature-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        .slogan {
+            margin-top: 25px;
+            padding-bottom: 25px;
+            text-align: center;
+        }
+
+        .slogan-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .detail-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .detail-content {
+            scrollbar-width: none;
+        }
+
+        @media (max-width: 375px) {
+            .initial-text {
+                font-size: 16px;
+            }
+
+            .detail-title {
+                font-size: 16px;
+            }
+
+            .feature-title {
+                font-size: 14px;
+            }
+
+            .feature-desc {
+                font-size: 12px;
+            }
+
+            .slogan-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="car-scene">
+        <img src="images/P3-1 .png" alt="汽车景观">
+    </div>
+
+    <div class="back-btn" onclick="location.href='page2.html'">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6"/>
+        </svg>
+        <span>返回</span>
+    </div>
+
+    <div class="initial-mask" id="initialMask">
+        <div class="initial-content">
+            <p class="initial-text">「 山野为邻 双舱为家 」</p>
+            <div class="initial-arrows">
+                <div class="arrow-up">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 14L12 9L17 14" stroke="#E63946" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 18L12 13L17 18" stroke="#E63946" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <div class="detail-header">
+                <div class="detail-back-btn" id="collapseBtn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12L5 12M5 12L11 18M5 12L11 6"/>
+                    </svg>
+                </div>
+                <h2 class="detail-title">点位介绍</h2>
+            </div>
+
+            <div class="feature-item">
+                <h3 class="feature-title"> rooftop stargazing base </h3>
+                <p class="feature-desc">
+                    Hard-shell rooftop tent, one-piece molding, automotive-grade high-strength steel frame, silent electric lifting, one-button opening and closing.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3 class="feature-title"> spiral ladder </h3>
+                <p class="feature-desc">
+                    Dual-mode detachable spiral ladder, easy for children and the elderly to get on and off, can be stored in the side compartment when not in use.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3 class="feature-title"> storage space </h3>
+                <p class="feature-desc">
+                    Front and rear compartments each have an independent large storage space, classified storage, easy to access.
+                </p>
+            </div>
+
+            <div class="slogan">
+                <p class="slogan-text">
+                    阖家趣野<br>
+                    给全家一座移动露营别墅
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const initialMask = document.getElementById('initialMask');
+        const collapseBtn = document.getElementById('collapseBtn');
+
+        const SLIDE_THRESHOLD = 0.12;
+        const INITIAL_HEIGHT_RATIO = 0.33;
+        const EXPANDED_HEIGHT_RATIO = 0.55;
+
+        let startY = 0;
+        let currentY = 0;
+        let isDragging = false;
+        let isExpanded = false;
+        let accumulatedDelta = 0;
+
+        function expandMask() {
+            initialMask.classList.add('expanded');
+            isExpanded = true;
+            accumulatedDelta = 0;
+        }
+
+        function collapseMask() {
+            initialMask.classList.remove('expanded');
+            isExpanded = false;
+            accumulatedDelta = 0;
+        }
+
+        collapseBtn.addEventListener('click', collapseMask);
+
+        function handleDragStart(clientY) {
+            if (isExpanded) return;
+            startY = clientY;
+            isDragging = true;
+            accumulatedDelta = 0;
+            initialMask.style.transition = 'none';
+        }
+
+        function handleDragMove(clientY) {
+            if (!isDragging || isExpanded) return;
+            currentY = clientY;
+            const deltaY = startY - currentY;
+            accumulatedDelta = deltaY;
+        }
+
+        function handleDragEnd() {
+            if (!isDragging || isExpanded) return;
+            isDragging = false;
+            initialMask.style.transition = 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+
+            if (accumulatedDelta > window.innerHeight * SLIDE_THRESHOLD) {
+                expandMask();
+            } else {
+                accumulatedDelta = 0;
+            }
+        }
+
+        initialMask.addEventListener('touchstart', function(e) {
+            handleDragStart(e.touches[0].clientY);
+        }, { passive: true });
+
+        initialMask.addEventListener('touchmove', function(e) {
+            handleDragMove(e.touches[0].clientY);
+        }, { passive: true });
+
+        initialMask.addEventListener('touchend', handleDragEnd);
+
+        initialMask.addEventListener('mousedown', function(e) {
+            handleDragStart(e.clientY);
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            handleDragMove(e.clientY);
+        });
+
+        document.addEventListener('mouseup', handleDragEnd);
+
+        let collapseDragging = false;
+        let collapseStartY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            if (!isExpanded) return;
+            const touchY = e.touches[0].clientY;
+            const maskTop = initialMask.offsetTop;
+            if (touchY < maskTop) {
+                collapseStartY = touchY;
+                collapseDragging = true;
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchmove', function(e) {
+            if (!collapseDragging || !isExpanded) return;
+            const deltaY = e.touches[0].clientY - collapseStartY;
+            if (deltaY > 40) {
+                collapseMask();
+                collapseDragging = false;
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchend', function() {
+            collapseDragging = false;
+        });
+
+        document.addEventListener('mousedown', function(e) {
+            if (!isExpanded) return;
+            const maskTop = initialMask.offsetTop;
+            if (e.clientY < maskTop) {
+                collapseStartY = e.clientY;
+                collapseDragging = true;
+            }
+        });
+
+        document.addEventListener('mouseup', function(e) {
+            if (!collapseDragging || !isExpanded) return;
+            const deltaY = e.clientY - collapseStartY;
+            if (deltaY > 40) {
+                collapseMask();
+            }
+            collapseDragging = false;
+        });
+    </script>
+</body>
+</html>
