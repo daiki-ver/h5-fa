@@ -25,12 +25,31 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            transform: translateY(var(--mask-offset, 0px));
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .car-scene img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .bottom-fill {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bottom-fill img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom;
         }
 
         .back-btn {
@@ -68,8 +87,8 @@
             z-index: 10;
             background: linear-gradient(to top, 
                 rgba(20, 45, 35, 1) 0%, 
-                rgba(25, 50, 40, 0.85) 30%, 
-                rgba(30, 55, 45, 0.4) 70%, 
+                rgba(25, 50, 40, 0.95) 70%,
+                rgba(30, 55, 45, 0.5) 85%,
                 rgba(40, 70, 55, 0) 100%);
             transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: height;
@@ -252,6 +271,10 @@
     </style>
 </head>
 <body>
+    <div class="bottom-fill">
+        <img src="images/P3-1 .png" alt="汽车景观">
+    </div>
+
     <div class="car-scene">
         <img src="images/P3-1 .png" alt="汽车景观">
     </div>
@@ -278,11 +301,11 @@
 
         <div class="detail-content">
             <div class="detail-header">
-                <div class="detail-back-btn" id="collapseBtn">
+<!--                <div class="detail-back-btn" id="collapseBtn">-->
 <!--                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
 <!--                        <path d="M19 12L5 12M5 12L11 18M5 12L11 6"/>-->
 <!--                    </svg>-->
-                </div>
+<!--                </div>-->
 <!--                <h2 class="detail-title">点位介绍</h2>-->
             </div>
 
@@ -311,7 +334,6 @@
 
     <script>
         const initialMask = document.getElementById('initialMask');
-        const collapseBtn = document.getElementById('collapseBtn');
 
         const SLIDE_THRESHOLD = 0.12;
 
@@ -325,15 +347,47 @@
             initialMask.classList.add('expanded');
             isExpanded = true;
             accumulatedDelta = 0;
+            document.documentElement.style.setProperty('--mask-offset', '-22vh');
         }
 
         function collapseMask() {
             initialMask.classList.remove('expanded');
             isExpanded = false;
             accumulatedDelta = 0;
+            document.documentElement.style.setProperty('--mask-offset', '0px');
         }
 
-        collapseBtn.addEventListener('click', collapseMask);
+        const detailContent = document.querySelector('.detail-content');
+        let detailStartY = 0;
+        let detailDragging = false;
+
+        detailContent.addEventListener('touchstart', function(e) {
+            detailStartY = e.touches[0].clientY;
+            detailDragging = true;
+        }, { passive: true });
+
+        detailContent.addEventListener('touchend', function(e) {
+            if (!detailDragging || !isExpanded) return;
+            const deltaY = e.changedTouches[0].clientY - detailStartY;
+            if (deltaY > 40) {
+                collapseMask();
+            }
+            detailDragging = false;
+        });
+
+        detailContent.addEventListener('mousedown', function(e) {
+            detailStartY = e.clientY;
+            detailDragging = true;
+        });
+
+        document.addEventListener('mouseup', function(e) {
+            if (!detailDragging || !isExpanded) return;
+            const deltaY = e.clientY - detailStartY;
+            if (deltaY > 40) {
+                collapseMask();
+            }
+            detailDragging = false;
+        });
 
         function handleDragStart(clientY) {
             if (isExpanded) return;
