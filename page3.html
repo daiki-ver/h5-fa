@@ -208,7 +208,7 @@
         .slogan {
             margin-top: 25px;
             padding-bottom: 25px;
-            text-align: center;
+            text-align: left;
         }
 
         .slogan-text {
@@ -279,31 +279,24 @@
         <div class="detail-content">
             <div class="detail-header">
                 <div class="detail-back-btn" id="collapseBtn">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 12L5 12M5 12L11 18M5 12L11 6"/>
-                    </svg>
+<!--                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                        <path d="M19 12L5 12M5 12L11 18M5 12L11 6"/>-->
+<!--                    </svg>-->
                 </div>
-                <h2 class="detail-title">点位介绍</h2>
+<!--                <h2 class="detail-title">点位介绍</h2>-->
             </div>
 
             <div class="feature-item">
-                <h3 class="feature-title"> rooftop stargazing base </h3>
+                <h3 class="feature-title"> 点位介绍 </h3>
+                <br/>
                 <p class="feature-desc">
-                    Hard-shell rooftop tent, one-piece molding, automotive-grade high-strength steel frame, silent electric lifting, one-button opening and closing.
-                </p>
-            </div>
-
-            <div class="feature-item">
-                <h3 class="feature-title"> spiral ladder </h3>
-                <p class="feature-desc">
-                    Dual-mode detachable spiral ladder, easy for children and the elderly to get on and off, can be stored in the side compartment when not in use.
-                </p>
-            </div>
-
-            <div class="feature-item">
-                <h3 class="feature-title"> storage space </h3>
-                <p class="feature-desc">
-                    Front and rear compartments each have an independent large storage space, classified storage, easy to access.
+                    暮色中,<br/>
+                    通过旋转攀梯在车顶拓展平台安装车顶帐，<br/>
+                    完成二楼观星基地的搭建，<br/>
+                    与家人在静谧的夜晚仰望星空。<br/>
+                    以车顶观景休憩空间 + 前后双舱巧思收纳，<br/>
+                    乐道L80用大空间包容每一段亲子陪伴，<br/>
+                    让户外畅玩更轻松、更安心
                 </p>
             </div>
 
@@ -321,8 +314,6 @@
         const collapseBtn = document.getElementById('collapseBtn');
 
         const SLIDE_THRESHOLD = 0.12;
-        const INITIAL_HEIGHT_RATIO = 0.33;
-        const EXPANDED_HEIGHT_RATIO = 0.55;
 
         let startY = 0;
         let currentY = 0;

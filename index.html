@@ -32,7 +32,7 @@
         }
 
         .logo {
-            margin-top: 20px;
+            margin-top: 0;
             width: 240px;
             height: auto;
         }
@@ -45,23 +45,23 @@
         .main-title {
             margin-top: 24px;
             font-size: 48px;
-            font-weight: 300;
+            font-weight: 200;
             color: white;
             letter-spacing: 8px;
         }
 
         .sub-title {
-            margin-top: 20px;
-            font-size: 32px;
-            font-weight: 400;
+            margin-top: 0;
+            font-size: 48px;
+            font-weight: 200;
             color: white;
             letter-spacing: 2px;
         }
 
         .event-type {
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: 300;
+            margin-top: 0;
+            font-size: 48px;
+            font-weight: 200;
             color: rgba(255, 255, 255, 0.6);
             letter-spacing: 4px;
         }
@@ -72,8 +72,8 @@
         }
 
         .date {
-            font-size: 20px;
-            color: #FF6B4A;
+            font-size: 18px;
+            color: white;
             letter-spacing: 2px;
         }
 
@@ -85,9 +85,15 @@
         }
 
         .arrow-down {
-            margin-top: 40px;
-            width: 30px;
-            height: 30px;
+            margin-top: 120px;
+            width: 40px;
+            height: 40px;
+            animation: floatUpDown 1.8s ease-in-out infinite;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .btn-enter {
@@ -95,9 +101,9 @@
             bottom: 120px;
             width: 200px;
             height: 50px;
-            background: linear-gradient(180deg, #FFF5E6 0%, #FFE4C4 100%);
+            background: linear-gradient(180deg, #FBE1A9FF 0%, #FBE1A9FF 100%);
             border: none;
-            border-radius: 25px;
+            border-radius: 8px;
             font-size: 16px;
             color: #333;
             cursor: pointer;
@@ -126,9 +132,11 @@
         </div>
 
         <div class="arrow-down">
-            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 10 L15 20 L23 10" stroke="#FF6B4A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M7 18 L15 28 L23 18" stroke="#FF6B4A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+            <svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 13 L20 27 L31 13" stroke="#FF6B4A" stroke-width="4.5" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+                <path d="M9 22 L20 36 L31 22" stroke="#FF6B4A" stroke-width="4.5" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" opacity="0.6"/>
             </svg>
         </div>
 
