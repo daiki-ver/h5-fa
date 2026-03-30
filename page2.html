@@ -193,113 +193,93 @@
     </style>
 </head>
 <body>
-    <div class="back-btn" onclick="location.href='index.html'">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 18L9 12L15 6"/>
-        </svg>
-        <span>返回</span>
-    </div>
-
-    <div class="map-wrapper" id="mapWrapper">
-        <div class="map-layer" id="mapLayer">
-            <img src="images/P2-map.jpg" alt="营地地图">
-            <div class="cars-layer">
-                <div class="car-icon" data-type="yellow" data-id="A" style="left: 25.1%; top: 45%;"
-                     onclick="onCarClick(this)">
-                    <span class="car-label"></span>
-                </div>
-
-                <div class="car-icon" data-type="green" data-id="1" style="left: 30.5%; top: 52.7%;"
-                     onclick="onCarClick(this)">
-                    <span class="car-label"></span>
-                </div>
-
-                <div class="car-icon" data-type="green" data-id="2" style="left: 38.0%; top: 53%;"
-                     onclick="onCarClick(this)">
-                    <span class="car-label"></span>
-                </div>
-
-                <div class="car-icon" data-type="red" data-id="10" style="left: 58%; top: 22%;" onclick="location.href='page3.html'">
-                    <div class="dot">10</div>
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 20V18C8 17 9 16 10 16H22C23 16 24 17 24 18V20C24 21 23 22 22 22H10C9 22 8 21 8 20Z"/>
-                        <rect x="7" y="12" width="18" height="6" rx="2"/>
-                        <circle cx="10" cy="24" r="3"/>
-                        <circle cx="22" cy="24" r="3"/>
-                        <rect x="6" y="10" width="4" height="4" rx="1"/>
-                        <rect x="22" y="10" width="4" height="4" rx="1"/>
-                    </svg>
-                    <span class="car-label"></span>
-                </div>
+<div class="map-wrapper" id="mapWrapper">
+    <div class="map-layer" id="mapLayer">
+        <img src="images/P2-map.jpg" alt="营地地图">
+        <div class="cars-layer">
+            <div class="car-icon" data-type="yellow" data-id="A" style="left: 25.1%; top: 45%;"
+                 onclick="onCarClick(this)">
+                <span class="car-label"></span>
             </div>
-            <div class="bottom-title">营地入口</div>
+
+            <div class="car-icon" data-type="green" data-id="1" style="left: 30.5%; top: 52.7%;"
+                 onclick="onCarClick(this)">
+                <span class="car-label"></span>
+            </div>
+
+            <div class="car-icon" data-type="green" data-id="2" style="left: 38.0%; top: 53%;"
+                 onclick="onCarClick(this)">
+                <span class="car-label"></span>
+            </div>
         </div>
+        <div class="bottom-title">营地入口</div>
     </div>
+</div>
 
-    <script>
-        const mapWrapper = document.getElementById('mapWrapper');
-        const mapLayer = document.getElementById('mapLayer');
-        //TODO 默认滚动位置
-        const INITIAL_SCROLL_PERCENT = 0.28;
+<script>
+    const mapWrapper = document.getElementById('mapWrapper');
+    const mapLayer = document.getElementById('mapLayer');
+    //TODO 默认滚动位置
+    const INITIAL_SCROLL_PERCENT = 0.28;
 
-        function setInitialScroll() {
-            setTimeout(function() {
-                const maxScroll = mapWrapper.scrollWidth - mapWrapper.clientWidth;
-                mapWrapper.scrollLeft = maxScroll * INITIAL_SCROLL_PERCENT;
-            }, 100);
-        }
+    function setInitialScroll() {
+        setTimeout(function () {
+            const maxScroll = mapWrapper.scrollWidth - mapWrapper.clientWidth;
+            mapWrapper.scrollLeft = maxScroll * INITIAL_SCROLL_PERCENT;
+        }, 100);
+    }
 
-        function onCarClick(element) {
-            const carId = element.dataset.id;
-            const carType = element.dataset.type;
-            console.log('Car clicked:', { id: carId, type: carType });
-            //跳转页面3
-            location.href = 'page3.html?carId=' + carId;
-        }
+    function onCarClick(element) {
+        const carId = element.dataset.id;
+        const carType = element.dataset.type;
+        console.log('Car clicked:', {id: carId, type: carType});
+        //跳转页面3
+        location.href = 'page3.html?carId=' + carId;
+    }
 
-        let isDragging = false;
-        let startX = 0;
-        let scrollLeft = 0;
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
 
-        mapWrapper.addEventListener('mousedown', function(e) {
-            isDragging = true;
-            startX = e.pageX - mapWrapper.offsetLeft;
-            scrollLeft = mapWrapper.scrollLeft;
-            mapWrapper.style.cursor = 'grabbing';
-        });
+    mapWrapper.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        startX = e.pageX - mapWrapper.offsetLeft;
+        scrollLeft = mapWrapper.scrollLeft;
+        mapWrapper.style.cursor = 'grabbing';
+    });
 
-        mapWrapper.addEventListener('mouseleave', function() {
-            isDragging = false;
-            mapWrapper.style.cursor = 'grab';
-        });
-
-        mapWrapper.addEventListener('mouseup', function() {
-            isDragging = false;
-            mapWrapper.style.cursor = 'grab';
-        });
-
-        mapWrapper.addEventListener('mousemove', function(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - mapWrapper.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            mapWrapper.scrollLeft = scrollLeft - walk;
-        });
-
-        mapWrapper.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].pageX - mapWrapper.offsetLeft;
-            scrollLeft = mapWrapper.scrollLeft;
-        }, { passive: true });
-
-        mapWrapper.addEventListener('touchmove', function(e) {
-            const x = e.touches[0].pageX - mapWrapper.offsetLeft;
-            const walk = (x - startX);
-            mapWrapper.scrollLeft = scrollLeft - walk;
-        }, { passive: true });
-
+    mapWrapper.addEventListener('mouseleave', function () {
+        isDragging = false;
         mapWrapper.style.cursor = 'grab';
+    });
 
-        setInitialScroll();
-    </script>
+    mapWrapper.addEventListener('mouseup', function () {
+        isDragging = false;
+        mapWrapper.style.cursor = 'grab';
+    });
+
+    mapWrapper.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - mapWrapper.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        mapWrapper.scrollLeft = scrollLeft - walk;
+    });
+
+    mapWrapper.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].pageX - mapWrapper.offsetLeft;
+        scrollLeft = mapWrapper.scrollLeft;
+    }, {passive: true});
+
+    mapWrapper.addEventListener('touchmove', function (e) {
+        const x = e.touches[0].pageX - mapWrapper.offsetLeft;
+        const walk = (x - startX);
+        mapWrapper.scrollLeft = scrollLeft - walk;
+    }, {passive: true});
+
+    mapWrapper.style.cursor = 'grab';
+
+    setInitialScroll();
+</script>
 </body>
 </html>

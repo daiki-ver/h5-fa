@@ -26,121 +26,36 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        .logo {
-            margin-top: 0;
-            width: 240px;
-            height: auto;
-        }
-
-        .logo img {
+        .cover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-        }
-
-        .main-title {
-            margin-top: 24px;
-            font-size: 32px;
-            font-weight: 200;
-            color: white;
-            letter-spacing: 8px;
-        }
-
-        .sub-title {
-            margin-top: 0;
-            font-size: 32px;
-            font-weight: 200;
-            color: white;
-            letter-spacing: 2px;
-        }
-
-        .event-type {
-            margin-top: 0;
-            font-size: 32px;
-            font-weight: 200;
-            color: rgba(255, 255, 255, 0.6);
-            letter-spacing: 4px;
-        }
-
-        .event-info {
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .date {
-            font-size: 18px;
-            color: white;
-            letter-spacing: 2px;
-        }
-
-        .location {
-            margin-top: 8px;
-            font-size: 18px;
-            color: #E63946;
-            letter-spacing: 1px;
-        }
-
-        .arrow-down {
-            margin-top: 120px;
-            width: 40px;
-            height: 40px;
-            animation: floatUpDown 1.8s ease-in-out infinite;
-        }
-
-        @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
         }
 
         .btn-enter {
             position: absolute;
-            bottom: 120px;
+            border: none;
+            bottom: 75px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 200px;
             height: 50px;
-            background: linear-gradient(180deg, #FBE1A9FF 0%, #FBE1A9FF 100%);
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #333;
+            background: transparent;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-enter:active {
-            transform: scale(0.98);
-            opacity: 0.9;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <div class="logo">
-            <img src="images/P1-logo.png" alt="乐道L80">
-        </div>
-
-        <h1 class="main-title">乐道L80</h1>
-        <h2 class="sub-title">「双舱超级大五座」</h2>
-        <p class="event-type">静态品鉴</p>
-
-        <div class="event-info">
-            <p class="date">2026.4.8-4.21</p>
-            <p class="location">中国·厦门</p>
-        </div>
-
-        <div class="arrow-down">
-            <svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 13 L20 27 L31 13" stroke="#FF6B4A" stroke-width="4.5" fill="none" stroke-linecap="round"
-                      stroke-linejoin="round"/>
-                <path d="M9 22 L20 36 L31 22" stroke="#FF6B4A" stroke-width="4.5" fill="none" stroke-linecap="round"
-                      stroke-linejoin="round" opacity="0.6"/>
-            </svg>
-        </div>
-
-        <button class="btn-enter" onclick="location.href='page2.html'">点击进入</button>
+        <img src="images/P1-2.png" alt="" class="cover-image">
+        <button class="btn-enter" onclick="location.href='page2.html'"></button>
     </div>
 </body>
 </html>
