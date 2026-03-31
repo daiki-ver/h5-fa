@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>乐道L80 - 点位介绍</title>
     <style>
+        @font-face {
+            font-family: 'ONVOFJH';
+            src: url('font/ONVOFJHRegular.otf') format('opentype');
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: 'ONVOFJH';
+            src: url('font/ONVOFJHBold.otf') format('opentype');
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'ONVOFJH';
+            src: url('font/ONVOFJHLight.otf') format('opentype');
+            font-weight: 300;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +28,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: 'ONVOFJH', -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
             width: 100vw;
             height: 100vh;
             overflow: hidden;
@@ -59,7 +75,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            color: #fff;
+            color: #7F7E7E;
             font-size: 14px;
             cursor: pointer;
             z-index: 15;
@@ -83,20 +99,17 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 33%;
+            height: 25%;
             z-index: 10;
-            background: linear-gradient(to top, 
-                rgba(20, 45, 35, 1) 0%,
-                rgba(25, 50, 40, 0.95) 70%,
-                rgba(30, 55, 45, 0.5) 85%,
-                rgba(40, 70, 55, 0) 100%);
+            background: transparent;
             transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: height;
             overflow: hidden;
         }
 
         .initial-mask.expanded {
-            height: 55%;
+            height: 40%;
+            background: #FDE1B0FF;
         }
 
         .initial-content {
@@ -163,7 +176,8 @@
             transition: opacity 0.3s ease;
             overflow-y: auto;
             padding: 0 20px;
-            padding-top: 60px;
+            padding-top: 20px;
+            text-align: center;
         }
 
         .initial-mask.expanded .detail-content {
@@ -176,15 +190,6 @@
             align-items: center;
             gap: 8px;
             margin-bottom: 20px;
-        }
-
-        .detail-back-btn {
-            color: #fff;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .detail-back-btn svg {
@@ -200,13 +205,6 @@
             stroke-linejoin: round;
         }
 
-        .detail-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #fff;
-            letter-spacing: 2px;
-        }
-
         .feature-item {
             margin-bottom: 18px;
         }
@@ -214,26 +212,25 @@
         .feature-title {
             font-size: 15px;
             font-weight: 600;
-            color: #fff;
+            color: #7F7E7E;
             margin-bottom: 6px;
         }
 
         .feature-desc {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(127, 126, 126, 0.85);
             line-height: 1.7;
         }
 
         .slogan {
-            margin-top: 25px;
             padding-bottom: 25px;
-            text-align: left;
+            text-align: center;
         }
 
         .slogan-text {
             font-size: 18px;
             font-weight: 700;
-            color: #fff;
+            color: #7F7E7E;
             letter-spacing: 2px;
             line-height: 1.6;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -313,18 +310,16 @@
 
             <div class="feature-item">
                 <h3 class="feature-title"> 点位介绍 </h3>
-                <br/>
                 <p class="feature-desc">
-                    暮色中,<br/>
-                    通过旋转攀梯在车顶拓展平台安装车顶帐，<br/>
-                    完成二楼观星基地的搭建，<br/>
+                    暮色中<br/>
+                    通过旋转攀梯在车顶拓展平台安装车顶帐<br/>
+                    完成二楼观星基地的搭建<br/>
                     与家人在静谧的夜晚仰望星空。<br/>
-                    以车顶观景休憩空间 + 前后双舱巧思收纳，<br/>
-                    乐道L80用大空间包容每一段亲子陪伴，<br/>
+                    以车顶观景休憩空间 + 前后双舱巧思收纳<br/>
+                    乐道L80用大空间包容每一段亲子陪伴<br/>
                     让户外畅玩更轻松、更安心
                 </p>
             </div>
-
             <div class="slogan">
                 <p class="slogan-text">
                     阖家趣野<br>
