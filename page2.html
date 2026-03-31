@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>营地导览 - 乐道L80</title>
     <style>
+        @font-face {
+            font-family: 'ONVOFJH';
+            src: url('font/ONVOFJHRegular.otf') format('opentype');
+            font-weight: normal;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -190,6 +195,16 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
+
+        .map-hint {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            font-size: 12px;
+            color: #7F7E7E;
+            font-family: 'ONVOFJH', sans-serif;
+            z-index: 15;
+        }
     </style>
 </head>
 <body>
@@ -197,82 +212,82 @@
     <div class="map-layer" id="mapLayer">
         <img src="images/P2-map.jpg" alt="营地地图">
         <div class="cars-layer">
-            <div class="car-icon" data-type="yellow" data-id="A" style="left: 25.1%; top: 45%;"
+            <div class="car-icon" data-type="yellow" data-id="A" style="left: 23.5%; top: 42%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="1" style="left: 30.5%; top: 52.7%;"
+            <div class="car-icon" data-type="green" data-id="1" style="left: 29.5%; top: 51%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="2" style="left: 38.0%; top: 53%;"
+            <div class="car-icon" data-type="green" data-id="2" style="left: 37.7%; top: 53%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="3" style="left: 59.2%; top: 16.3%;"
+            <div class="car-icon" data-type="green" data-id="3" style="left: 58.6%; top: 15.1%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="4" style="left: 67.2%; top: 11.3%;"
+            <div class="car-icon" data-type="green" data-id="4" style="left: 66.8%; top: 10%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="5" style="left: 47.4%; top: 11.3%;"
+            <div class="car-icon" data-type="green" data-id="5" style="left: 46.4%; top: 10.5%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="6" style="left: 67.3%; top: 52.3%;"
+            <div class="car-icon" data-type="green" data-id="6" style="left: 66.8%; top: 52.8%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="6" style="left: 69.5%; top: 56.8%;"
+            <div class="car-icon" data-type="green" data-id="6" style="left: 69.3%; top: 52.8%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="7" style="left: 43.2%; top: 33.5%;"
+            <div class="car-icon" data-type="green" data-id="7" style="left: 44.4%; top: 32.8%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="8" style="left: 72.1%; top: 23.7%;"
+            <div class="car-icon" data-type="green" data-id="8" style="left: 74.2%; top: 21%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="8" style="left: 75.0%; top: 25.0%;"
+            <div class="car-icon" data-type="green" data-id="8" style="left: 76.7%; top: 21%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="9" style="left: 58.5%; top: 62.6%;"
+            <div class="car-icon" data-type="green" data-id="9" style="left: 57.2%; top: 67.5%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="10" style="left: 29.8%; top: 18.8%;"
+            <div class="car-icon" data-type="green" data-id="10" style="left: 29.6%; top: 16%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="11" style="left: 57.6%; top: 42.8%;"
+            <div class="car-icon" data-type="green" data-id="11" style="left: 58.2%; top: 42.5%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="12" style="left: 69.9%; top: 43%;"
+            <div class="car-icon" data-type="green" data-id="13" style="left: 75.5%; top: 43.7%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="13" style="left: 74.9%; top: 43.2%;"
+            <div class="car-icon" data-type="green" data-id="13" style="left: 78.1%; top: 43.7%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
@@ -284,7 +299,7 @@
 <script>
     const mapWrapper = document.getElementById('mapWrapper');
     //TODO 默认滚动位置
-    const INITIAL_SCROLL_PERCENT = 0.29;
+    const INITIAL_SCROLL_PERCENT = 0.76;
 
     function setInitialScroll() {
         setTimeout(function () {
@@ -345,5 +360,6 @@
 
     setInitialScroll();
 </script>
+<div class="map-hint">*左右滑动查看营地地图全景</div>
 </body>
 </html>
