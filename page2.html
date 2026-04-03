@@ -292,14 +292,13 @@
                 <span class="car-label"></span>
             </div>
         </div>
-        <div class="bottom-title">营地入口</div>
     </div>
 </div>
 
 <script>
     const mapWrapper = document.getElementById('mapWrapper');
     //TODO 默认滚动位置
-    const INITIAL_SCROLL_PERCENT = 0.76;
+    const INITIAL_SCROLL_PERCENT = 0.33;
 
     function setInitialScroll() {
         setTimeout(function () {
@@ -313,7 +312,7 @@
         const carType = element.dataset.type;
         console.log('Car clicked:', {id: carId, type: carType});
         //跳转页面3
-        location.href = 'page3.html?carId=' + carId;
+        location.href = './point/point-01.html?carId=' + carId;
     }
 
     let isDragging = false;

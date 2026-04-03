@@ -172,13 +172,17 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
             overflow-y: auto;
-            padding: 0 20px;
-            padding-top: 20px;
+            padding-top: 12px;
             text-align: center;
+        }
+
+        .detail-content > * {
+            flex-shrink: 0;
         }
 
         .initial-mask.expanded .detail-content {
@@ -207,27 +211,26 @@
         }
 
         .feature-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            color: #7F7E7E;
+            color: #454955;
         }
 
         .feature-desc {
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 600;
-            color: rgba(127, 126, 126, 0.85);
+            color: #454955;
             line-height: 1.5;
         }
 
         .slogan {
-            padding-bottom: 25px;
             text-align: center;
         }
 
         .slogan-text {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            color: #7F7E7E;
+            color: #454955;
             letter-spacing: 2px;
             line-height: 1.5;
             /*text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
@@ -254,6 +257,14 @@
                 font-size: 12px;
             }
 
+            .feature-item {
+                margin-bottom: 15px;
+            }
+
+            .slogan {
+                padding-bottom: 20px;
+            }
+
             .slogan-text {
                 font-size: 16px;
             }
@@ -262,14 +273,14 @@
 </head>
 <body>
     <div class="bottom-fill">
-        <img src="images/P3-1 .png" alt="汽车景观">
+        <img src="../images/P3-1 .png" alt="汽车景观">
     </div>
 
     <div class="car-scene">
-        <img src="images/P3-1 .png" alt="汽车景观">
+        <img src="../images/P3-1 .png" alt="汽车景观">
     </div>
 
-    <div class="back-btn" onclick="location.href='page2.html'">
+    <div class="back-btn" onclick="location.href='../page2.html'">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 19L8 12L14 5"/>
         </svg>
