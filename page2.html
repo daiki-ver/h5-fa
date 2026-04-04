@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>营地导览 - 乐道L80</title>
     <style>
-        @font-face {
-            font-family: 'ONVOFJH';
-            src: url('font/ONVOFJHRegular.otf') format('opentype');
-            font-weight: normal;
-        }
         * {
             margin: 0;
             padding: 0;
@@ -137,17 +132,6 @@
             color: #333;
         }
 
-        .bottom-title {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            color: #FF6B4A;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-
         @media (max-width: 375px) {
             .car-icon {
                 width: 32px;
@@ -170,19 +154,6 @@
             }
         }
 
-        .back-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #333;
-            font-size: 14px;
-            cursor: pointer;
-            z-index: 15;
-        }
-
         .back-btn svg {
             width: 20px;
             height: 20px;
@@ -202,7 +173,6 @@
             bottom: 20px;
             font-size: 12px;
             color: #7F7E7E;
-            font-family: 'ONVOFJH', sans-serif;
             z-index: 15;
         }
     </style>
@@ -210,84 +180,94 @@
 <body>
 <div class="map-wrapper" id="mapWrapper">
     <div class="map-layer" id="mapLayer">
-        <img src="images/P2-map.jpg" alt="营地地图">
+        <img src="https://daiki-1304990605.cos.ap-shanghai.myqcloud.com/LD80/images/P2-map.jpg" alt="营地地图">
         <div class="cars-layer">
-            <div class="car-icon" data-type="yellow" data-id="A" style="left: 23.5%; top: 42%;"
+            <div class="car-icon" data-type="yellow" data-id="P" style="left: 15.7%; top: 42%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="1" style="left: 29.5%; top: 51%;"
+            <div class="car-icon" data-type="green" data-id="Q" style="left: 22.8%; top: 52%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="2" style="left: 37.7%; top: 53%;"
+            <div class="car-icon" data-type="green" data-id="R" style="left: 32.8%; top: 54%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="3" style="left: 58.6%; top: 15.1%;"
+            <div class="car-icon" data-type="green" data-id="A" style="left: 23.2%; top: 17%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="4" style="left: 66.8%; top: 10%;"
+            <div class="car-icon" data-type="green" data-id="B" style="left: 41.3%; top: 33.5%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="5" style="left: 46.4%; top: 10.5%;"
+            <div class="car-icon" data-type="green" data-id="C" style="left: 43.9%; top: 11.2%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="6" style="left: 66.8%; top: 52.8%;"
+            <div class="car-icon" data-type="green" data-id="D" style="left: 58.8%; top: 15.8%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="6" style="left: 69.3%; top: 52.8%;"
+            <div class="car-icon" data-type="green" data-id="E" style="left: 58.3%; top: 42.8%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="7" style="left: 44.4%; top: 32.8%;"
+            <div class="car-icon" data-type="green" data-id="F" style="left: 57.5%; top: 67.5%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="8" style="left: 74.2%; top: 21%;"
+            <div class="car-icon" data-type="green" data-id="G" style="left: 68.9%; top: 11%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="8" style="left: 76.7%; top: 21%;"
+            <div class="car-icon" data-type="green" data-id="H" style="left: 78%; top: 22%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="9" style="left: 57.2%; top: 67.5%;"
+            <div class="car-icon" data-type="green" data-id="I" style="left: 81.2%; top: 22%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="10" style="left: 29.6%; top: 16%;"
+            <div class="car-icon" data-type="green" data-id="J" style="left: 68.8%; top: 52.8%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="11" style="left: 58.2%; top: 42.5%;"
+            <div class="car-icon" data-type="green" data-id="K" style="left: 72%; top: 52.8%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="13" style="left: 75.5%; top: 43.7%;"
+            <div class="car-icon" data-type="green" data-id="L" style="left: 80%; top: 44.6%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
 
-            <div class="car-icon" data-type="green" data-id="13" style="left: 78.1%; top: 43.7%;"
+            <div class="car-icon" data-type="green" data-id="M" style="left: 83.2%; top: 44.6%;"
+                 onclick="onCarClick(this)">
+                <span class="car-label"></span>
+            </div>
+
+            <div class="car-icon" data-type="green" data-id="N" style="left: 90%; top: 15.3%;"
+                 onclick="onCarClick(this)">
+                <span class="car-label"></span>
+            </div>
+
+            <div class="car-icon" data-type="green" data-id="O" style="left: 89.5%; top: 60.5%;"
                  onclick="onCarClick(this)">
                 <span class="car-label"></span>
             </div>
@@ -298,13 +278,13 @@
 <script>
     const mapWrapper = document.getElementById('mapWrapper');
     //TODO 默认滚动位置
-    const INITIAL_SCROLL_PERCENT = 0.33;
+    const INITIAL_SCROLL_PERCENT = 0.22;
 
     function setInitialScroll() {
         setTimeout(function () {
             const maxScroll = mapWrapper.scrollWidth - mapWrapper.clientWidth;
             mapWrapper.scrollLeft = maxScroll * INITIAL_SCROLL_PERCENT;
-        }, 100);
+        }, 500);
     }
 
     function onCarClick(element) {
@@ -312,7 +292,7 @@
         const carType = element.dataset.type;
         console.log('Car clicked:', {id: carId, type: carType});
         //跳转页面3
-        location.href = './point/point-01.html?carId=' + carId;
+        location.href = `./point/point-${carId}.html?carId=` + carId;
     }
 
     let isDragging = false;

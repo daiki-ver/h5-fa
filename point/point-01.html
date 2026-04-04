@@ -7,17 +7,17 @@
     <style>
         @font-face {
             font-family: 'ONVOFJH';
-            src: url('font/ONVOFJHRegular.otf') format('opentype');
+            src: url('../font/ONVOFJHRegular.otf') format('opentype');
             font-weight: normal;
         }
         @font-face {
             font-family: 'ONVOFJH';
-            src: url('font/ONVOFJHBold.otf') format('opentype');
+            src: url('../font/ONVOFJHBold.otf') format('opentype');
             font-weight: bold;
         }
         @font-face {
             font-family: 'ONVOFJH';
-            src: url('font/ONVOFJHLight.otf') format('opentype');
+            src: url('../font/ONVOFJHLight.otf') format('opentype');
             font-weight: 300;
         }
 
@@ -49,23 +49,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .bottom-fill {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 35%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .bottom-fill img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: bottom;
         }
 
         .back-btn {
@@ -270,12 +253,8 @@
     </style>
 </head>
 <body>
-    <div class="bottom-fill">
-        <img src="../images/P3-1 .png" alt="汽车景观">
-    </div>
-
     <div class="car-scene">
-        <img src="../images/P3-1 .png" alt="汽车景观">
+        <img src="https://daiki-1304990605.cos.ap-shanghai.myqcloud.com/LD80/images/P3-1%20.png" alt="汽车景观">
     </div>
 
     <div class="back-btn" onclick="location.href='../page2.html'">
@@ -311,23 +290,23 @@
             </div>
 
             <div class="feature-item">
-                <h3 class="feature-title"> 点位介绍 </h3>
+                <div class="slogan">
+                    <p class="slogan-text">
+                        阖家趣野<br>
+                        给全家一座移动露营别墅
+                    </p>
+                </div>
                 <p class="feature-desc">
                     暮色中<br/>
-                    通过旋转攀梯在车顶拓展平台安装车顶帐<br/>
-                    完成二楼观星基地的搭建<br/>
-                    与家人在静谧的夜晚仰望星空。<br/>
-                    以车顶观景休憩空间 + 前后双舱巧思收纳<br/>
-                    乐道L80用大空间包容每一段亲子陪伴<br/>
-                    让户外畅玩更轻松、更安心
+                    旋转攀梯搭建车顶帐，拓展二楼观星台<br/>
+                    与家人静享神秘星空，舒躺双舱空间<br/>
+                    一键放倒二排平铺2.2米大床<br/>
+                    超广角补盲影像 定格璀璨夜景<br/>
+                    乐道L80“三室两厅”大空间包容每段亲子陪伴<br/>
+                    让户外畅玩更轻松，更安心
                 </p>
             </div>
-            <div class="slogan">
-                <p class="slogan-text">
-                    阖家趣野<br>
-                    给全家一座移动露营别墅
-                </p>
-            </div>
+
         </div>
     </div>
 
